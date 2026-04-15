@@ -1,0 +1,28 @@
+{
+  "name": "logistics-blockchain-system",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Blockchain-based logistics and supply-chain tracking system",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "node": "hardhat node",
+    "deploy:local": "hardhat run scripts/deploy.js --network localhost",
+    "deploy:sepolia": "hardhat run scripts/deploy.js --network sepolia",
+    "export:abi": "node scripts/export-abi.js",
+    "backend:start": "node backend/src/app.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "ethers": "^6.15.0",
+    "express": "^4.21.2",
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "^2.1.0",
+    "@nomicfoundation/hardhat-ethers": "^3.1.0",
+    "chai": "^4.5.0",
+    "dotenv": "^16.6.1",
+    "hardhat": "^2.26.5"
+  }
+}

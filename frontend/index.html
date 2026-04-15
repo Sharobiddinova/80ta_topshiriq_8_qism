@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blockchain Logistics Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <h1>Logistika Tizimi - Blockchain Demo</h1>
+        <p>Har bir topshiriq alohida bo'limda bajariladi.</p>
+      </section>
+
+      <section class="card config">
+        <h2>API Sozlamasi</h2>
+        <label>
+          Backend URL
+          <input id="backendUrl" value="http://localhost:4000" />
+        </label>
+        <button id="connectSocketBtn">Real-time Kanalni Ulash</button>
+        <div id="socketStatus" class="result">Socket holati: ulanmagan</div>
+      </section>
+
+      <section class="card">
+        <h2>1. Mahsulotni birinchi marta kiritish</h2>
+        <form id="task1Form">
+          <input name="productId" placeholder="Product ID (PRD-101)" required />
+          <input name="name" placeholder="Mahsulot nomi" required />
+          <input name="metadataURI" placeholder="metadataURI (ipfs://...)" />
+          <button type="submit">Ro'yxatdan o'tkazish</button>
+        </form>
+        <pre id="task1Result" class="result"></pre>
+      </section>
+
+      <section class="card">
+        <h2>2. Real vaqt lokatsiya kuzatuvi</h2>
+        <form id="task2Form">
+          <input name="productId" placeholder="Product ID" required />
+          <input name="location" placeholder="Yangi lokatsiya" required />
+          <button type="submit">Lokatsiyani yangilash</button>
+        </form>
+        <button id="task2HistoryBtn">Lokatsiya tarixini olish</button>
+        <input id="task2HistoryProductId" placeholder="Product ID" />
+        <pre id="task2Result" class="result"></pre>
+        <ul id="realtimeFeed" class="feed"></ul>
+      </section>
+
+      <section class="card">
+        <h2>3. Yetkazib berish holatini yangilash</h2>
+        <form id="task3Form">
+          <input name="productId" placeholder="Product ID" required />
+          <input
+            name="status"
+            placeholder="Status (InTransit, Delivered yoki 1,4...)"
+            required
+          />
+          <input name="note" placeholder="Izoh" />
+          <button type="submit">Statusni yangilash</button>
+        </form>
+        <button id="task3HistoryBtn">Status tarixini olish</button>
+        <input id="task3HistoryProductId" placeholder="Product ID" />
+        <pre id="task3Result" class="result"></pre>
+      </section>
+
+      <section class="card">
+        <h2>4. Mahsulot haqiqiyligini tekshirish</h2>
+        <form id="task4Form">
+          <input name="productId" placeholder="Product ID" required />
+          <input name="expectedHash" placeholder="0x... expected hash" required />
+          <button type="submit">Tekshirish</button>
+        </form>
+        <button id="task4FingerprintBtn">Fingerprint olish</button>
+        <input id="task4FingerprintProductId" placeholder="Product ID" />
+        <pre id="task4Result" class="result"></pre>
+      </section>
+
+      <section class="card">
+        <h2>5. Egasini o'zgartirish</h2>
+        <form id="task5Form">
+          <input name="productId" placeholder="Product ID" required />
+          <input name="newOwner" placeholder="Yangi owner address (0x...)" required />
+          <input name="note" placeholder="Izoh" />
+          <button type="submit">Ownership transfer</button>
+        </form>
+        <button id="task5HistoryBtn">Ownership tarixini olish</button>
+        <input id="task5HistoryProductId" placeholder="Product ID" />
+        <pre id="task5Result" class="result"></pre>
+      </section>
+
+      <section class="card">
+        <h2>6. Butun ta'minot zanjirini audit qilish</h2>
+        <input id="task6ProductId" placeholder="Product ID" />
+        <button id="task6AuditBtn">Audit qilish</button>
+        <pre id="task6Result" class="result"></pre>
+      </section>
+    </main>
+
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
+

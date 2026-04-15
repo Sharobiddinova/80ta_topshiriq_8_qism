@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: logistics-blockchain-backend
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run compile && npm run export:abi
+    startCommand: npm run backend:start
+    autoDeploy: true
+    envVars:
+      - key: BACKEND_PORT
+        value: 10000
+      - key: RPC_URL
+        sync: false
+      - key: PRIVATE_KEY
+        sync: false
+      - key: CONTRACT_ADDRESS
+        sync: false
+
