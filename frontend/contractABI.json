@@ -1,0 +1,594 @@
+[
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "string",
+        "name": "productId",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum SupplyChainLogistics.DeliveryStatus",
+        "name": "status",
+        "type": "uint8"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "updatedBy",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "note",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "timestamp",
+        "type": "uint256"
+      }
+    ],
+    "name": "DeliveryStatusUpdated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "string",
+        "name": "productId",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "location",
+        "type": "string"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "updatedBy",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "timestamp",
+        "type": "uint256"
+      }
+    ],
+    "name": "LocationUpdated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "string",
+        "name": "productId",
+        "type": "string"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "previousOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "note",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "timestamp",
+        "type": "uint256"
+      }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "string",
+        "name": "productId",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "manufacturer",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "fingerprint",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "timestamp",
+        "type": "uint256"
+      }
+    ],
+    "name": "ProductRegistered",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "productId",
+        "type": "string"
+      }
+    ],
+    "name": "auditSupplyChain",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "productId",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "metadataURI",
+            "type": "string"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "fingerprint",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bool",
+            "name": "exists",
+            "type": "bool"
+          },
+          {
+            "internalType": "address",
+            "name": "registeredBy",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "currentOwner",
+            "type": "address"
+          },
+          {
+            "internalType": "enum SupplyChainLogistics.DeliveryStatus",
+            "name": "status",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint256",
+            "name": "createdAt",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct SupplyChainLogistics.Product",
+        "name": "product",
+        "type": "tuple"
+      },
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "location",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "timestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "updatedBy",
+            "type": "address"
+          }
+        ],
+        "internalType": "struct SupplyChainLogistics.LocationUpdate[]",
+        "name": "locations",
+        "type": "tuple[]"
+      },
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "from",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "to",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "timestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "note",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct SupplyChainLogistics.OwnershipUpdate[]",
+        "name": "ownerships",
+        "type": "tuple[]"
+      },
+      {
+        "components": [
+          {
+            "internalType": "enum SupplyChainLogistics.DeliveryStatus",
+            "name": "status",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint256",
+            "name": "timestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "updatedBy",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "note",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct SupplyChainLogistics.StatusUpdate[]",
+        "name": "statuses",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "productId",
+        "type": "string"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "expectedHash",
+        "type": "bytes32"
+      }
+    ],
+    "name": "checkAuthenticity",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getAllProductIds",
+    "outputs": [
+      {
+        "internalType": "string[]",
+        "name": "",
+        "type": "string[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "productId",
+        "type": "string"
+      }
+    ],
+    "name": "getLocationHistory",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "location",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "timestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "updatedBy",
+            "type": "address"
+          }
+        ],
+        "internalType": "struct SupplyChainLogistics.LocationUpdate[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "productId",
+        "type": "string"
+      }
+    ],
+    "name": "getOwnershipHistory",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "from",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "to",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "timestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "note",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct SupplyChainLogistics.OwnershipUpdate[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "productId",
+        "type": "string"
+      }
+    ],
+    "name": "getProduct",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "productId",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "metadataURI",
+            "type": "string"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "fingerprint",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bool",
+            "name": "exists",
+            "type": "bool"
+          },
+          {
+            "internalType": "address",
+            "name": "registeredBy",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "currentOwner",
+            "type": "address"
+          },
+          {
+            "internalType": "enum SupplyChainLogistics.DeliveryStatus",
+            "name": "status",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint256",
+            "name": "createdAt",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct SupplyChainLogistics.Product",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "productId",
+        "type": "string"
+      }
+    ],
+    "name": "getStatusHistory",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "enum SupplyChainLogistics.DeliveryStatus",
+            "name": "status",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint256",
+            "name": "timestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "updatedBy",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "note",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct SupplyChainLogistics.StatusUpdate[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "productId",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "metadataURI",
+        "type": "string"
+      }
+    ],
+    "name": "registerProduct",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "productId",
+        "type": "string"
+      },
+      {
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "note",
+        "type": "string"
+      }
+    ],
+    "name": "transferProductOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "productId",
+        "type": "string"
+      },
+      {
+        "internalType": "enum SupplyChainLogistics.DeliveryStatus",
+        "name": "newStatus",
+        "type": "uint8"
+      },
+      {
+        "internalType": "string",
+        "name": "note",
+        "type": "string"
+      }
+    ],
+    "name": "updateDeliveryStatus",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "productId",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "location",
+        "type": "string"
+      }
+    ],
+    "name": "updateLocation",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]
